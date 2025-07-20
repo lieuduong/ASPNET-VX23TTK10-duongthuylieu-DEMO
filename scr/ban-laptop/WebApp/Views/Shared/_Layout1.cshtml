@@ -1,0 +1,150 @@
+﻿@* @model WebApp.Areas.Admin.Models.LoaiSP *@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Đăng nhập - Đăng kí</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i">
+    <link rel="stylesheet" href="~/libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/main.css">
+    <link rel="stylesheet" href="~/css/responsive.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="main-menu-header w-100">
+                <div class="container">
+                    <div id="nav-menu">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item current-menu-item">
+                                <a class="nav-link" href="/">Trang chủ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Giới thiệu</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Sản phẩm
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="productsDropdown">
+                                    @if (ViewBag.ListLSP != null)
+                                    {
+                                        foreach (var item in ViewBag.ListLSP)
+                                        {
+                                            <li>
+                                                <a class="dropdown-item" asp-action="_productinCategory"
+                                                    asp-route-id="@item.MaLoai">
+                                                    @item.TenLoai
+                                                </a>
+                                            </li>
+                                        }
+                                    }
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Liên hệ</a>
+                            </li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                    <div class="box-footer info-contact">
+                        <h3>Thông tin liên hệ</h3>
+                        <div class="content-contact">
+                            <p>Website chuyên cung cấp các loại Laptop </p>
+                            <p>
+                                <strong>Địa chỉ:</strong>331, Hòa Hưng, An Giang
+                            </p>
+                            <p>
+                                <strong>Email: </strong> lieudt090890@sv-onuni.edu.vn
+                            </p>
+                            <p>
+                                <strong>Điện thoại: </strong> 0919276162
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                    <div class="box-footer info-contact">
+                        <h3>Thông tin khác</h3>
+                        <div class="content-list">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-angle-double-right"></i> Chính sách bảo mật</a></li>
+                                <li><a href="#"><i class="fa fa-angle-double-right"></i> Chính sách đổi trả</a></li>
+                                <li><a href="#"><i class="fa fa-angle-double-right"></i> Phí vận chuyển</a></li>
+                                <li><a href="#"><i class="fa fa-angle-double-right"></i> Hướng dẫn thanh toán</a></li>
+                                <li><a href="#"><i class="fa fa-angle-double-right"></i> Chương trình khuyến mãi</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                    <div class="box-footer info-contact">
+                        <h3>Form liên hệ</h3>
+                        <div class="content-contact">
+                            <form action="/" method="GET" role="form">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <input type="text" name="" id="" class="form-control" placeholder="Họ và Tên">
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                                        <input type="email" name="" id="" class="form-control"
+                                            placeholder="Địa chỉ mail">
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                                        <input type="text" name="" id="" class="form-control"
+                                            placeholder="Số điện thoại">
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <input type="text" name="" id="" class="form-control" placeholder="Tiêu đề">
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <textarea name="" id="" cols="30" rows="10" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn-contact">Liên hệ ngay</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>Copyright © 2025 DTLSHOP All Rights Reserved - Design by DTL</p>
+        </div>
+    </footer>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+
+</html>
